@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { -webkit-text-size-adjust: 100%; }
+body { background: #F4F6F7; color: #14243B; font-feature-settings: "ss01"; }
+.num { font-variant-numeric: tabular-nums; }
+
+@layer components {
+  .panel { @apply bg-white border border-line rounded-xl; }
+  .label { @apply block text-sm font-medium text-ink mb-1.5; }
+  .hint { @apply text-xs text-ink-soft mt-1; }
+  .input {
+    @apply w-full rounded-md border border-line bg-white px-3 py-2.5 text-[15px] text-ink placeholder:text-ink-faint
+      focus:outline-none focus:border-cross focus:ring-2 focus:ring-cross/20 transition-colors;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2.5 text-[15px] font-medium transition-colors
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cross disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary { @apply btn bg-cross text-white hover:bg-cross-dark; }
+  .btn-quiet { @apply btn bg-white text-ink border border-line hover:bg-paper; }
+  .btn-ghost { @apply btn text-ink-soft hover:text-ink hover:bg-paper px-3; }
+  .pill { @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium; }
+  .th { @apply text-left text-xs font-medium text-ink-soft px-4 py-2.5 border-b border-line bg-paper/60; }
+  .td { @apply px-4 py-3 border-b border-line text-sm align-top; }
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+  .print-sheet { border: none !important; box-shadow: none !important; max-width: none !important; margin: 0 !important; }
+  aside, header.app-top { display: none !important; }
+  main { padding: 0 !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
